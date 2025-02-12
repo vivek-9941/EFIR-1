@@ -1,0 +1,14 @@
+Index: eFIR/src/main/java/com/efir/main/controller/ComplaintHandller.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.efir.main.controller;\r\n\r\npublic class ComplaintHandller {\r\n}\r\n
+===================================================================
+diff --git a/eFIR/src/main/java/com/efir/main/controller/ComplaintHandller.java b/eFIR/src/main/java/com/efir/main/controller/ComplaintHandller.java
+--- a/eFIR/src/main/java/com/efir/main/controller/ComplaintHandller.java	(revision 4b8529e81932dbd90472c2c714db2b36c581e8bb)
++++ b/eFIR/src/main/java/com/efir/main/controller/ComplaintHandller.java	(date 1738993296945)
+@@ -1,4 +1,5 @@
+ package com.efir.main.controller;
+ 
+ public class ComplaintHandller {
++
+ }

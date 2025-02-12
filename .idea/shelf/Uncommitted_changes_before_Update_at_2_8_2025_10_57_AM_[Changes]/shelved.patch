@@ -1,0 +1,14 @@
+Index: eFIR/src/main/java/com/vivek/eFIR/controller/ComplaintHandller.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.vivek.eFIR.controller;\r\n\r\npublic class ComplaintHandller {\r\n}\r\n
+===================================================================
+diff --git a/eFIR/src/main/java/com/vivek/eFIR/controller/ComplaintHandller.java b/eFIR/src/main/java/com/vivek/eFIR/controller/ComplaintHandller.java
+--- a/eFIR/src/main/java/com/vivek/eFIR/controller/ComplaintHandller.java	(revision fe8860f2c0be93917845f658eb64b1d86082400e)
++++ b/eFIR/src/main/java/com/vivek/eFIR/controller/ComplaintHandller.java	(date 1738992446989)
+@@ -1,4 +1,5 @@
+ package com.vivek.eFIR.controller;
+ 
+ public class ComplaintHandller {
++
+ }

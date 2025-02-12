@@ -1,0 +1,16 @@
+Index: eFIR/src/main/java/com/vivek/eFIR/Repository/AllRepository.java
+===================================================================
+diff --git a/eFIR/src/main/java/com/vivek/eFIR/Repository/AllRepository.java b/eFIR/src/main/java/com/vivek/eFIR/Repository/AllRepository.java
+deleted file mode 100644
+--- a/eFIR/src/main/java/com/vivek/eFIR/Repository/AllRepository.java	(revision fe8860f2c0be93917845f658eb64b1d86082400e)
++++ /dev/null	(revision fe8860f2c0be93917845f658eb64b1d86082400e)
+@@ -1,9 +0,0 @@
+-package com.vivek.eFIR.Repository;
+-
+-import org.springframework.data.jpa.repository.JpaRepository;
+-import org.springframework.stereotype.Repository;
+-
+-@Repository
+-public class AllRepository  {
+-
+-}

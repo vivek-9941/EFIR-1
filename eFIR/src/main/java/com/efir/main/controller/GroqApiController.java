@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Mono;
 
 
 @RestController
@@ -21,7 +22,7 @@ public class GroqApiController {
     private String model;
 
     @GetMapping("/api/groq")
-    public String callApi(
+    public Mono<String> callApi(
             @RequestParam String content) {
 
         return groqApiService.callGroqApi(apiKey, model, content);

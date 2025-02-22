@@ -1,6 +1,7 @@
-package com.efir.main.controller;
+package com.efir.main.controller.police;
 
 import com.efir.main.model.Complaint;
+import com.efir.main.model.User;
 import com.efir.main.service.Implementation.FetchComplainServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,17 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/register")
-public class RegisterController {
+@RequestMapping("/user")
+public class UserRegistration {
     @Autowired
     private FetchComplainServiceImplementation registerer;
 
-    @PostMapping("/complaint")
-    public ResponseEntity<?> registerComplaint(@RequestBody Complaint complaint){
+    @PostMapping("/register")
+    public ResponseEntity<?> registerComplaint(@RequestBody User user){
         try{
 
-        Complaint registered =  registerer.savecomplaint(complaint);
-        return ResponseEntity.ok().body(registered);
+            User registered =  registerer.saveuser(user);
+            return ResponseEntity.ok().body(registered);
         }
         catch(Exception e){
             System.out.println("Problem in saving the complant");

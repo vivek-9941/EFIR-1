@@ -18,7 +18,7 @@ import java.util.Date;
         private Date date;
 
         @ManyToOne
-        @JoinColumn(name = "status_updated_by")
+        @JoinColumn(name = "status_updated_by", nullable=true)
         private User user;
 
         private String uniqueUserId;

@@ -18,7 +18,7 @@ public class FectchComplaintCitizen {
     private FetchComplainServiceImplementation fetch;
 
     @GetMapping("/fetch/{id}")
-    public ResponseEntity<Complaint> getComplaint(@PathVariable int id) throws ComplaintNotFoundException {
+    public ResponseEntity<Complaint> getComplaint(@PathVariable String id) throws ComplaintNotFoundException {
         Complaint complaint = fetch.fetchByFirId(id);
         return ResponseEntity.ok(complaint);
     }

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ComplaintRepo extends JpaRepository<Complaint,Integer> {
-     Complaint findByfirId(int firid);
+     Complaint findByfirId(String firid);
 }
 

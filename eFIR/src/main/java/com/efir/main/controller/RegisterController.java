@@ -19,14 +19,17 @@ public class RegisterController {
     @PostMapping("/complaint")
     public ResponseEntity<?> registerComplaint(@RequestBody Complaint complaint) {
         try {
-            System.out.println(complaint);
+            System.out.println("Received Complaint: " + complaint);
+            System.out.println("Filed By: " + complaint.getFiledBy()); // Debugging
+
+            if (complaint.getFiledBy() == null) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("FiledBy (User) is missing in the request");
+            }
+
             Complaint registered = registerer.saveComplaint(complaint);
-            System.out.println(registered);
             return ResponseEntity.ok().body(registered);
         } catch (Exception e) {
-            System.out.println("Problem in saving the complant");
             return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(e.getMessage());
         }
-
     }
 }

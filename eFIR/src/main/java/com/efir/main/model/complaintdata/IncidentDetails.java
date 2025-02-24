@@ -1,9 +1,6 @@
 package com.efir.main.model.complaintdata;
 
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
@@ -21,6 +18,7 @@ public class IncidentDetails {
     private String landmark;
     private String district;
     private String subDistrict;
+    @Lob
     private String incidentDescription;
 }
 

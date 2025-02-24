@@ -17,13 +17,13 @@ public class RegisterController {
     private FetchComplainServiceImplementation registerer;
 
     @PostMapping("/complaint")
-    public ResponseEntity<?> registerComplaint(@RequestBody Complaint complaint){
-        try{
-
-        Complaint registered =  registerer.savecomplaint(complaint);
-        return ResponseEntity.ok().body(registered);
-        }
-        catch(Exception e){
+    public ResponseEntity<?> registerComplaint(@RequestBody Complaint complaint) {
+        try {
+            System.out.println(complaint);
+            Complaint registered = registerer.saveComplaint(complaint);
+            System.out.println(registered);
+            return ResponseEntity.ok().body(registered);
+        } catch (Exception e) {
             System.out.println("Problem in saving the complant");
             return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(e.getMessage());
         }

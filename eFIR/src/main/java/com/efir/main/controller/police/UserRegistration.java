@@ -18,13 +18,12 @@ public class UserRegistration {
     private FetchComplainServiceImplementation registerer;
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerComplaint(@RequestBody User user){
-        try{
+    public ResponseEntity<?> registerComplaint(@RequestBody User user) {
+        try {
 
-            User registered =  registerer.saveuser(user);
+            User registered = registerer.saveuser(user);
             return ResponseEntity.ok().body(registered);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Problem in saving the complant");
             return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(e.getMessage());
         }

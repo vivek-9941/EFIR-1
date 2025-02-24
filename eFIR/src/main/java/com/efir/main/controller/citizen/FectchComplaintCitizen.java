@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-
-
 @RestController
 @RequestMapping("/citizen")
 public class FectchComplaintCitizen {
     @Autowired
     private FetchComplainServiceImplementation fetch;
+
     @GetMapping("/fetch/{id}")
     public ResponseEntity<Complaint> getComplaint(@PathVariable int id) throws ComplaintNotFoundException {
         Complaint complaint = fetch.fetchByFirId(id);
         return ResponseEntity.ok(complaint);
     }
+
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface FetchComplainService {
     Complaint fetchByFirId(int id) throws ComplaintNotFoundException;
+
     List<Complaint> fetchAll();
 
 }

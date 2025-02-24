@@ -1,7 +1,7 @@
 package com.efir.main.controller;
 
 import com.efir.main.model.Person;
-import com.efir.main.service.Implementation.FetchComplainServiceImplementation;
+import com.efir.main.service.Implementation.FetchPersonsAssociatedimpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,9 +17,11 @@ import java.util.List;
 public class PersonRegister {
 
     @Autowired
-    FetchComplainServiceImplementation fetchp;
-@PostMapping("/register")
-        public List<Person> RegisterPerson( @RequestBody  List<Person> person){
-          return  fetchp.saveperson(person);
-        }
+    FetchPersonsAssociatedimpl fetch;
+
+    @PostMapping("/register")
+    public List<Person> RegisterPerson(@RequestBody List<Person> person) {
+        System.out.println(person);
+        return fetch.saveperson(person);
+    }
 }

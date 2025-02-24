@@ -2,6 +2,7 @@ package com.efir.main.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 @Entity
 @Table(name = "person")
 @Getter
@@ -11,22 +12,19 @@ import lombok.*;
 @ToString
 @Builder
 public class Person {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
+
+    @Column(nullable = false) // Ensure this is NOT null
+    private int firId;
 
     private String name;
     private String address;
-    private String occupation;
     private int age;
-    private long aadhar;
-    private int contact;
-    private int firid;
-    @Enumerated(EnumType.STRING)
-    private PersonType personType;  // VICTIM, ACCUSED, or WITNESS
-
-    @ManyToOne
-    @JoinColumn(name = "complaint_id")  // Links to the FIR
-    private Complaint complaint;
+    private String aadhar;
+    private String contact;
+    private String occupation;
+    private String personType;
+// VICTIM, ACCUSED, or WITNESS
 }

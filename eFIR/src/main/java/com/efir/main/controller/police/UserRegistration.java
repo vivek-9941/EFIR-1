@@ -1,6 +1,5 @@
 package com.efir.main.controller.police;
 
-import com.efir.main.model.Complaint;
 import com.efir.main.model.User;
 import com.efir.main.service.Implementation.FetchComplainServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;

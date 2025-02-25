@@ -22,7 +22,7 @@ public class ComplaintStatus {
     @JoinColumn(name = "status_updated_by", nullable = true)
     private User user;
 
-    private String uniqueUserId;
+
 
     private String status = "Pending";
 

@@ -8,6 +8,7 @@ import com.efir.main.exeptions.ComplaintNotFoundException;
 import com.efir.main.exeptions.NoComplaintsFoundExceptions;
 import com.efir.main.model.Complaint;
 import com.efir.main.model.User;
+import com.efir.main.model.complaintdata.ComplaintStatus;
 import com.efir.main.model.complaintdata.IncidentDetails;
 import com.efir.main.service.FetchComplainService;
 import com.efir.main.utility.JsonToListConverter;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -65,9 +67,10 @@ public class FetchComplainServiceImplementation implements FetchComplainService 
 //        System.out.println(Firid);
         IncidentDetails details= complaint.getIncidentDetails();
         String incidentdetail= details.getIncidentDescription();
-       String summary = apiController.callApi("generate short and accurate and to the point summary of the complaint in short paragraph grammatically correct"+" "+ incidentdetail );
-       complaint1.setIncidentDetails(details);
-       complaint1.getIncidentDetails().setIncidentDescription(summary);
+        String summary = apiController.callApi("generate short and accurate and to the point summary of the complaint in short paragraph grammatically correct"+" "+ incidentdetail );
+       details.setIncidentDescription(summary);
+        complaint1.setIncidentDetails(details);
+
 //        System.out.println(summary);
 
         String prompt = summary + "\n\n" +
@@ -120,28 +123,35 @@ public class FetchComplainServiceImplementation implements FetchComplainService 
         complaint1.setCrimeType(listcrimes);
 //        System.out.println(crimetype);
 
-        String ipcprompt = "You are an expert in Indian Penal Code (IPC). Your task is to identify all relevant IPC sections that apply to the given crime categories.\n\n" +
-                "### Crime Categories:\n" + crimetype + "\n\n" +
+        String ipcprompt = "Your task is to identify  relevant and accurate IPC sections that  apply to the given incidence description.\n\n" +
+                "description:\n" + summary + "\n\n" +
                 "### Task:\n" +
-                "1. Analyze the given crime categories.\n" +
-                "2. Identify all applicable IPC sections without any constraints or predefined lists.\n" +
+                "1. Analyze the given description.\n" +
+                "2. Identify relevant IPC sections without any constraints or predefined lists.\n" +
                 "3. Return the result strictly as a JSON array of strings containing IPC sections in the format: \"SECTION IPC\".\n\n" +
                 "Example Output:\n" +
                 "[\"302 IPC\", \"307 IPC\", \"376 IPC\"]\n\n" +
                 "If no relevant section is found, return:\n" +
-                "[\"Not Identified\"]";
+                "[\"Not Identified\"]" +
+                "Your must send list of ipc codes only in return message and nothing extra";
 
         String ipcodes = apiController.callApi(ipcprompt);
         List<String> listipc = convert.convertJsonToList(ipcodes);
-
         complaint1.setIpc(listipc);
         System.out.println(listipc);
 
-        //----------------
+        ComplaintStatus status  = complaint.getComplaintStatus();
+        Date currdate = new Date();
+        status.setDate(currdate);
+        complaint1.setComplaintStatus(status);
+
+        List<String> evidences = complaint.getEvidence();
+        complaint1.setEvidence(evidences);
+        //-------------------------------
         User user = userrepo.findById(complaint.getFiledBy().getId())
                 .orElseThrow(() -> new RuntimeException("User not found"));
-        complaint.setFiledBy(user); // Attach the full User entity
-        return repo.save(complaint);
+        complaint1.setFiledBy(user); // Attach the full User entity
+        return repo.save(complaint1);
     }
 
 

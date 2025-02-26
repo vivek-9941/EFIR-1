@@ -1,6 +1,7 @@
 package com.efir.main.controller.citizen;
 
 
+import com.efir.main.controller.EmailController;
 import com.efir.main.model.User;
 import com.efir.main.service.JwtUtil;
 import com.efir.main.service.UserService;
@@ -15,6 +16,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private EmailController emailController;
     @Autowired
     private JwtUtil jwtUtil;
 
@@ -34,7 +37,22 @@ public class UserController {
     public ResponseEntity<?> sendOtp(@RequestParam String email) {
         String otp = String.valueOf((int) (Math.random() * 900000) + 100000);
         userService.saveOtp(email, otp);
-        // Send OTP via email (implement email service)
+
+        String subject =" Subject: Your One-Time Password (OTP) for e-FIR";
+        String body = "Dear [User's Name],\n" +
+                "\n" +
+                "Your One-Time Password (OTP) for e-FIR is:\n" +
+                "\n" +
+                 otp +"\n" +
+                "\n" +
+                "This OTP is valid for 2 minutes. Please do not share it with anyone.\n" +
+                "\n" +
+                "If you did not request this OTP, please contact our support team immediately.\n" +
+                "\n" +
+                "Thank you,\n" +
+                "e-FIR Team\n";
+
+        emailController.sendEmail(email,subject,body);
         return ResponseEntity.ok().body("OTP sent successfully");
     }
 

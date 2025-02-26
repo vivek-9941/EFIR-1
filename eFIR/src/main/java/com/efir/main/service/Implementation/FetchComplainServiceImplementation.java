@@ -54,17 +54,17 @@ public class FetchComplainServiceImplementation implements FetchComplainService 
     }
 
 
-    //------------------------------------------------------------------------
-    public String generatefirid(){
-        return UUID.randomUUID().toString();
-    }
+//    //------------------------------------------------------------------------
+//    public String generatefirid(){
+//        return UUID.randomUUID().toString();
+//    }
 
     public Complaint saveComplaint(Complaint complaint) {
 
         Complaint complaint1 = new Complaint();
-        String Firid = generatefirid();
+        String Firid = complaint.getFirId();
         complaint1.setFirId(Firid);
-//        System.out.println(Firid);
+        System.out.println(Firid);
         IncidentDetails details= complaint.getIncidentDetails();
         String incidentdetail= details.getIncidentDescription();
         String summary = apiController.callApi("generate short and accurate and to the point summary of the complaint in short paragraph grammatically correct"+" "+ incidentdetail );

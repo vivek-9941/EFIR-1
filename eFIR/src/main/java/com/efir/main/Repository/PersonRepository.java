@@ -18,4 +18,6 @@ public interface PersonRepository extends JpaRepository<Person, Integer> {
 
     @Query("SELECT p FROM Person p WHERE p.firId = :complaintId AND p.personType = 'WITNESS'")
     List<Person> findWitnessesByComplaintId(int complaintId);
+
+
 }

@@ -10,8 +10,6 @@ public class EmailController {
 
     @Autowired
     private EmailSenderService emailSenderService;
-
-
     public String sendEmail(String toEmail,
                             String subject,
                             String body) {

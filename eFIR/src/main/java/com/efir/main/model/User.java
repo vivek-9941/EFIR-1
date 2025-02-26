@@ -37,6 +37,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    private String otp;
     @OneToMany(mappedBy = "filedBy")
     @JsonIgnore  // Prevents infinite loop in JSON serialization
     private List<Complaint> filedComplaints;

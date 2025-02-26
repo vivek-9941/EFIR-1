@@ -32,7 +32,7 @@ public class FetchPersonsAssociatedimpl implements FetchPersonsAssociated {
         return witnesses;
     }
 
-    public List<Person> saveperson(List<Person> person) {
-        return repo.saveAll(person);
+    public List<Person> savePersons(List<Person> persons) {
+        return repo.saveAll(persons); // Use saveAll instead of saveallperson
     }
 }

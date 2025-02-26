@@ -17,7 +17,7 @@ public class Person {
     private Long id;
 
     @Column(nullable = false) // Ensure this is NOT null
-    private int firId;
+    private String firId;
 
     private String name;
     private String address;

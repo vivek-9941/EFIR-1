@@ -38,6 +38,5 @@ public class FetchComplaintAuthority {
         List<List<Person>> allperson = List.of(accused, witness, victims);
         return ResponseEntity.ok().body(allperson);
         //alwways sends 3 lsit if not persent then empty list will be sent
-
     }
 }

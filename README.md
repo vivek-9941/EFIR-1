@@ -78,10 +78,6 @@ This repository contains the backend implementation for the **e-FIR System**, a 
 - Ensure `firId` is properly set in the request.
 - Verify database column allows `NULL` or auto-generation if needed.
 
-### 3. **Foreign Key Constraint Issues**
-- Ensure referenced tables exist before inserting related data.
-- Check if ID types match between tables (e.g., both should be `bigint`).
-
 ## Running the Project
 ### Prerequisites
 - Install **Java 17**
@@ -104,6 +100,5 @@ This repository contains the backend implementation for the **e-FIR System**, a 
 ## Contributing
 Feel free to raise issues or submit PRs to enhance the project.
 
-## License
-This project is licensed under the MIT License.
+
 

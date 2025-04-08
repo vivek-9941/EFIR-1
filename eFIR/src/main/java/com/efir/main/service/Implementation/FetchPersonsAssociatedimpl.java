@@ -22,7 +22,7 @@ public class FetchPersonsAssociatedimpl implements FetchPersonsAssociated {
     @Override
     public List<Person> Accused(int firid) {
         List<Person> accused = repo.findAccusedByComplaintId(firid);
-        return accused;
+        return accused1;
 
     }
 
